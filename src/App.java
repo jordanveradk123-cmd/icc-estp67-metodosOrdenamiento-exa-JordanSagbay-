@@ -1,3 +1,5 @@
+
+
 import controllers.BrandController;
 import models.Brand;
 import models.CarModel;
@@ -5,41 +7,37 @@ import models.CarYear;
 
 public class App {
         public static void main(String[] args) throws Exception {
-                System.out.println("Examen interciclo");
-                BrandController controller = new BrandController();
-                Brand[] brands = createBrands();
-                System.out.println("original");
-                for(int i =0 ; i<brands.length;i++){
-                        System.out.println(brands[i].getBrandName()+ "Anios Validos"+brands[i].getTotalValidYears());
+                System.out.println("Examen Interciclo");
+                BrandController controlador = new BrandController();
+                Brand[] brands=createBrands();
+                System.out.println("Original");
+                for(int i=0;i<brands.length;i++){
+                        System.out.println(brands[i].getBrandName()+"Anios validos :"+brands[i].getTotalValidYears());
                 }
-                System.out.println("ordenado de forma acendente por insercion");
-                controller.sortSelectionAsc(brands);
-                 for(int j =0 ; j<brands.length;j++){
-                        System.out.println(brands[j].getBrandName()+ "Anios Validos"+brands[j].getTotalValidYears());
+                System.out.println();
+                System.out.println("Ordenado por metodo");
+                controlador.sortSelectionDesc(brands);
+                for(int j=0;j<brands.length;j++){
+                        System.out.println(brands[j].getBrandName()+"Anios validos :"+brands[j].getTotalValidYears());
                 }
-                System.out.println("Busqueda binaria por 7 anios validos en orden acendente");
-                Brand criterio1 = controller.binarySearchByValidYears(brands, 7, true);
-                if (criterio1 != null) {
-                        System.out.println("Encontrada: Marca: " + criterio1.getBrandName() + ", Total de anios validos: "
-                                                        + criterio1.getTotalValidYears());
-                }else {
-                        System.out.println("No encontrada");
+                System.out.println();
+                System.out.println("Busqueda binaria por criterio de 7 anios validos ");
+                Brand criterio1 = controlador.binarySearchByValidYears(brands, 7, false );
+                if(criterio1!=null){
+                        System.out.println("Marca:"+criterio1.getBrandName()+"-Anios validos:"+criterio1.getTotalValidYears());
+                }else{
+                       System.out.println("no encontrado");
                 }
-                System.out.println("\nBuscar marca con 5 ños validos que se ordenaron :");
-                Brand criterio2 = controller.binarySearchByValidYears(brands, 5, true);
-                if (criterio2 != null) {
-                        System.out.println(
-                                        "Encontrada: Marca: " + criterio2.getBrandName() + ", Total de anios validos: "
-                                                        + criterio2.getTotalValidYears());
-                } else {
-                        System.out.println("No encontrada");
-                }
+                System.out.println();
+                System.out.println("Busqueda binaria por criterio de 4 anios validos ");
+                Brand criterio2 = controlador.binarySearchByValidYears(brands, 4, false);
+                if(criterio2!=null){
+                        System.out.println("Marca:"+criterio2.getBrandName()+"-Anios validos:"+criterio2.getTotalValidYears());
+                }else 
+                       System.out.println("no encontrado");
 
-                
 
         }
-
-        
         public static Brand[] createBrands() {
                 // ===== HONDA =====
                 CarYear[] civicYears = {

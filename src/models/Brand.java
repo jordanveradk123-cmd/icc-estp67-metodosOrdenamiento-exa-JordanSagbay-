@@ -24,18 +24,19 @@ public class Brand {
   public void setModels(CarModel[] models) {
     this.models = models;
   }
- public int getTotalValidYears() {
-   int n = 0;
-    for (CarModel model : models) {
-      for (CarYear caryYear : model.getYears()) {
-        if (caryYear.isValid()) {
+  public int getTotalValidYears() {
+    int n=0;
+    for (CarModel model: models) {
+      for(CarYear year:model.getYears()){
+        if(year.isValid()){
           n++;
         }
-        
       }
+      
     }
     return n;
   }
+ 
   @Override
   public String toString() {
     return "Brand [brandName=" + brandName + ", models=" + Arrays.toString(models) + "]";
